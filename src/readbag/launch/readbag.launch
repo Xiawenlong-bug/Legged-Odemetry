@@ -1,0 +1,16 @@
+<launch>
+    <!--好像VSCODE的debug模式只能用这个，用不了带xacro的launch文件-->>
+    <node pkg="readbag" type="readbag" name="readbag" output="screen" />
+    <!-- We do not have a robot connected, so publish fake joint states -->
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="/use_gui" value="TRUE"/>
+        <rosparam param="/source_list">[/bag_joint_states]</rosparam >
+    </node>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="1000.0"/>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz" respawn="false" output="screen"
+        args="-d $(find aliengo_description)/launch/check_joint.rviz"/> -->
+
+</launch>

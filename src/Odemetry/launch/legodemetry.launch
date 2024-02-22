@@ -1,0 +1,34 @@
+<launch>
+    <arg name="user_debug" default="false"/>
+    
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aliengo_description)/xacro/robot.xacro'
+            DEBUG:=$(arg user_debug)"/>
+
+    <!--node pkg="readbag" type="subscribe" name="subscriber" output="screen" /-->
+    <!-- 在这里，更换BAG时，注意要修改EKF.CPP的初始值 Line51-->
+    <!-- 在这里，更换BAG时，同时要更改state.estimate.cpp line100的YAW轴初值补偿 -->
+    <node pkg="rosbag" type="play" name="subscriber" output="screen" args="--clock /home/xwl/LegOdemetry/aliengo_vrpn_joint_3.bag"/>
+
+    <node pkg="Odemetry" type="LegOdemetry" name="odemetry" output="screen" />
+    
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+        <param name="use_gui" value="TRUE"/>
+        <rosparam param="/source_list">[/bag_joint_states]</rosparam >
+    </node>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="1000.0"/>
+    </node>
+
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="aliengo_base_broadcaster" args="0 0 0 0 0 0 /aliengo /base 1000.0" /> -->
+
+
+    <node pkg="rviz" type="rviz" name="rviz" respawn="false" output="screen"
+        args="-d $(find aliengo_description)/launch/check_joint.rviz"/>
+
+
+
+    <!-- <node pkg="rosbag" type="record" name="bag_record" args="-a /home/xwl/LegOdemetry/1.bag"/> -->
+</launch>

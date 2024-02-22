@@ -1,0 +1,6 @@
+*.zip
+*.bag
+/build
+**/.vscode/**
+/devel
+

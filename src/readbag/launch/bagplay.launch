@@ -1,0 +1,8 @@
+<launch>
+    <!--好像VSCODE的debug模式只能用这个，用不了带xacro的launch文件-->
+    <!--node pkg="readbag" type="subscribe" name="subscriber" output="screen" /-->
+    <node pkg="rosbag" type="play" name="subscriber" output="screen" args="--clock /home/xwl/LegOdemetry/aliengo_vrpn_joint_2.bag"/>
+
+    <node pkg="readbag" type="subscribe" name="subsciber" output="screen" />
+
+</launch>
