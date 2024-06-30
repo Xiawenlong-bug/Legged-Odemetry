@@ -1,0 +1,6 @@
+aliengo_vrpn_joint_1.bag filter=lfs diff=lfs merge=lfs -text
+aliengo_vrpn_joint_2.bag filter=lfs diff=lfs merge=lfs -text
+aliengo_vrpn_joint_3.bag filter=lfs diff=lfs merge=lfs -text
+bag1_final.bag filter=lfs diff=lfs merge=lfs -text
+bag2_final.bag filter=lfs diff=lfs merge=lfs -text
+bag3_final.bag filter=lfs diff=lfs merge=lfs -text
